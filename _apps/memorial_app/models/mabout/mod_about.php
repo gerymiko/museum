@@ -1,0 +1,19 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+
+	class Mod_about extends CI_Model {
+
+		function __construct() {
+	        parent::__construct();
+	        $this->load->database();
+	    }
+
+	    function about(){
+	    	$datax = array('status_active' => 1);
+	    	$query = $this->db->from('master_about')
+	    		->where($datax)
+	    		->get()
+	    		->result();
+	    	return $query;
+	    }
+	}
+?>

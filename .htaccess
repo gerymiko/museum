@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+  	RewriteEngine On
+  	Options -Indexes
+  	
+  	RewriteCond $1 !^(index\\.php|resources|robots\\.txt)
+  	RewriteCond %{REQUEST_FILENAME} !-f
+  	RewriteCond %{REQUEST_FILENAME} !-d
+  	RewriteCond %{HTTP_HOST} ^museum.smd$
+  	RewriteRule ^(.+)$ _url/museum/index.php?/$1 [L,QSA]
+
+  	RewriteCond $1 !^(index\\.php|resources|robots\\.txt)
+  	RewriteCond %{REQUEST_FILENAME} !-f
+  	RewriteCond %{REQUEST_FILENAME} !-d
+  	RewriteCond %{HTTP_HOST} ^museum.memorial$
+  	RewriteRule ^(.+)$ _url/memorial/index.php?/$1 [L,QSA]
+
+  	RewriteCond %{REQUEST_URI} !^/_url/admin
+  	RewriteCond %{REQUEST_FILENAME} !-f
+  	RewriteCond %{REQUEST_FILENAME} !-d
+  	RewriteRule ^(.*)$ _url/admin/index.php?q=$1 [L,QSA]
+</IfModule>
